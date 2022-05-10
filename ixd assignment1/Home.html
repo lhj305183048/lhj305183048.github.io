@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href=https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+    body{
+    background-image: url(img/123.jpg);
+        background-size: cover;}
+              
+        @keyframes example {
+            0% {background-image:url(img/1.jpg); left:0px;top: 0px;}
+            33%{background-image:url(img/2.jpg);left:200px;top: 0px;}
+            66%{background-image:url(img/3.jpg);left:200px;top: 200px;}
+            100%{background-image:url(img/4.jpg);left:0px;top: 200px;}
+            
+        }
+        
+        
+        #panel {width: 200px;
+        height: 200px;
+        background-color:#f80;
+            animation-name: example;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            position: relative;
+            animation-fill-mode:forwards; 
+            animation-delay: 3s;
+        /*transition-timing-function: linear;*/}
+     
+    </style>
+</head>
+ <script language="javascript">
+     var t = null;
+    t = setTimeout(time,1000);
+    function time()
+    {
+       clearTimeout(t);
+       dt = new Date();
+       var h=dt.getHours();
+       var m=dt.getMinutes();
+       var s=dt.getSeconds();
+       document.getElementById("timeShow").innerHTML =  "Now Time："+h+":"+m+","+s+".";
+       t = setTimeout(time,1000);        
+    } 
+  </script>
+<body>
+    <ul>
+       <a href="1.html" style="font-family:Slabo;font-size:200%;text-decoration:none; color:black;">Calculator</a>
+    </ul>
+    
+  
+    
+        
+        <h1 style="text-align:center;">Constellation and Zodiac Calculator</h1>
+        <div id="panel" style="w3-circle"><label id="timeShow" ></lable></div>
+    
+     <div id="a" align="center">  <p style="text-align: center; font-weight: bold;font-size: 20px;"> Welcome to Constellation and Zodiac Calculator
+           <br>
+           We can help you quickly calculate your Constellation and Chinese Zodiac.</p>
+    <p><a href="1.html" class="w3-button w3-round w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off ">Quick Start</a></p>
+        </div>
+
+
+</body>
+</html>
