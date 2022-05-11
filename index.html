@@ -1,284 +1,352 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>KEEP LEARNING</title>
-    
+    <title>Sea Level Rise</title>
     <style>
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding 0;
+            overflow: hidden;
+            text-align: center;
+        }
 
-@import url(https://fonts.googleapis.com/css?family=Lato:900);
-*, *:before, *:after{
-  box-sizing:border-box;
-}
-@font-face {
-    font-family:'sinkin_sans400_regular';
-    src: url('../fonts/SinkinSans-400Regular-webfont.eot');
-    src: url('../fonts/SinkinSans-400Regular-webfont.eot?#iefix') format('embedded-opentype'),
-         
-         url('../fonts/SinkinSans-400Regular-webfont.woff') format('woff'),
-         url('../fonts/SinkinSans-400Regular-webfont.ttf') format('truetype'),
-         url('../fonts/SinkinSans-400Regular-webfont.svg#sinkin_sans400_regular') format('svg');
-    font-weight: normal;
-    font-style: normal;}
+        #header {
+            position: absolute;
+            width: 100%;
+            
+        }
 
+        #badge {
+            margin-top:20px;
+            width: 100%;
+            max-width: 740px;
+        }
 
-        
+        #panel {
+            position: absolute;
+            right: 33%;
+            left: 33%;
+            bottom: 200px;
+            z-index: 100;
+            width: 100%;
+            max-width: 640px;
+            background-color: rgba(255, 255, 255, 0.3);
+            margin: auto;
+            border-radius: 5px;
+            padding: 10px;
+        }
 
+        .button {
+
+            background-color: #f4511e;
+            border: none;
+            color: white;
+            padding: 15px 60px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 22px;
+            opacity: 0.6;
+            transition: 0.3s;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 5px;
+            
+            
+        }
+
+        .button:hover {
+            opacity: 1
+        }
+        .button2 {
+
+            background-color: lightskyblue;
+            border: none;
+            color: white;
+            padding: 5px 45%;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 22px;
+            opacity: 0.6;
+            transition: 0.3s;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 5px;
+            
+            
+        }
+
+        .button2:hover {
+            opacity: 1
+        }
+
+        #demo {
+            font-size: 22px;
+            
+            color: white;
+        }
+
+        #inner {
+            position: absolute;
+            bottom: 30px;
+            z-index: 100;
+            width: 100%;
+        }
+
+        input[type=range].slide {
+            -webkit-appearance: none;
+            background-color: #0a99a3;
+            height: 6px;
+            width: 300px;
+            border-radius: 3px;
+
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            background-color: #0c75a3;
+            margin: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
     </style>
-        
-    <!-- template -->
-    <link href="1.css" rel="stylesheet">
-    <link href="carousel.css" rel="stylesheet">
-    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
-    
 </head>
 
 <body>
-   <header>
-         <div class="wrapper">
-  <nav class="navbar navbar-expand-md fixed-top">
-      
-    <div class="container-fluid">
-      <a class="navbar-logo" href="index.html">KEEP LEARNING.</a>
+    <div id="header">
+        <img src="image/header.png" id="badge" > </div>
 
- 
+
+    
+    <div id="panel">
         
-          <ul class="navbar-nav me-auto mb-2 mb-md-0">
-            
-          <div class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#introduction">Overview</a>
-          </div>
-      
-            <div class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#composition">Function</a>
-          </div>
-            <div class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#Bibliography">Research</a>
-          </div>
-              
-                   <div class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#Contribution">User Test</a>
-          </div>
-              
-         <div class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#Influence">Video </a>
-          </div>
-          
-         
-   
+
+        <p id="demo"></p>
+        <button class="button" onclick="myFunction1()">Cause</button>
+        <button class="button" onclick="myFunction2()">Result</button>
+        <button class="button" onclick="myFunction3()">Improvement</button>
+    <button class="button2" onclick="myFunction4()">Close</button></div>
+
+    <div>
         
-            
-        </ul>
-
-      </div>
     
-  </nav>
-       </div>
-</header>
-    
-
-    
-
-  
-    
-  <main>
- 
-<section id="introduction" > 
-
-    <div class="wrapper">
-
-             
-              <div class="row featurette" style="margin-top:1rem">
-      <div class="col-md-7">
-        <img src="images/logo.png" style="width: 50%;height: 50%"> 
-        
-        <h2 class="featurette-heading">KEEP LEARNING
-           
-            <br></h2>
-          <span class="text-muted" style="font-size:150%">a learning assistance and companion system</span>
-        <p class="lead">Let your learning process no longer be lonely and helpless. The personalized smart chatbot and online study room help you find your learning partners and better plan your learning progress.</p>
-      </div>
-
     </div>
-         
-      
     
-       
 
-   
-      
-       
-     </div>
-    
-        
-</section>
+    <div id="inner">
+        <input class="slide" type="range" min="0" max="7" step="1" value="0" oninput="showVal(this.value)" "iceMelt(val)" >
+        <p style="color:aliceblue">Move the slider to see the water level </p>
+    </div>
 
-       <hr class="featurette-divider">
-             
-<section id=composition>
-  
-    <!--<div style=" padding-left:260px; border:8px solid;"><h2>Composition</h2></div>-->
-    
-    
-    <div class="wrapper">
-        
-        
-<div class="parent-box1">
-      
-        <img src="images/f1.png" style="width: 100%;height: 100%">
-       
-       
-   
-      </div>
-<div id="ctext" >
-            <div class="row featurette">
-      <div>
-        <h3>AI Assistant</h3>
-        <p>Design your own chatbot to assist and accompany you in your study process. You can personalize it and set it to speak like your favorite characters.</p>
-      </div>
-       <hr>          
-        
-     <div>
-        <h3>Study Room</h3>
-        <p>Join or create a study room, find online study partners, and discuss subjects of common interest and problems you encounter</p>
-      </div>
-    <hr> 
-     <div>
-        <h3>Four Assistant Functions</h3>
-        <p>A variety of learning functions provided by AI conversation: scheduling, taking notes, memorizing vocabulary, and managing progress; More features in development.</p>
-      </div>
+    <script src="js/three.min.js"></script>
+    <script src="js/Detector.js"></script>
+    <script src="js/ColladaLoader.js"></script>
+    <script src="js/tween.min.js"></script>
 
+
+
+    <script>
+        var scene, camera, renderer, water, island, dae, ice;
+        var waterHt = 1;
+        var lastVal = 0;
+        var iceHt=1;
+        var mouse = new THREE.Vector2(),
+            INTERSECTED;
+
+        function init() {
+            //add detector to see if WebGL is supported
+            if (!Detector.webgl) Detector.addGetWebGLMessage();
+            //set up a scene
+            scene = new THREE.Scene();
+            //add a camera
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            //render the scene - start renderer and set it's size
+            renderer = new THREE.WebGLRenderer({
+                antialias: true
+            });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0xcaf8f1, 1);
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            //add to webpage
+            document.body.appendChild(renderer.domElement);
+
+            var light = new THREE.DirectionalLight(0xffffff, 0.5);
+            light.position.set(1, 1, 1).
+            normalize();
+            scene.add(light);
+
+            var loader = new THREE.ColladaLoader();
+            loader.options.convertUpAxis = true;
+            loader.load('scene.dae', function(collada) {
+
+                var dae = collada.scene;
+
+                dae.traverse(function(child) {
+
+                    if (child instanceof THREE.Mesh) {
+                        child.castShadow = true;
+                        child.receiveShadow = true;
+                    }
+
+                });
+
+                dae.scale.x = dae.scale.y = dae.scale.z = 0.7;
+                dae.updateMatrix();
+                scene.add(dae);
+
+                water=scene.getObjectByName("water", true);
+
+                ice1=scene.getObjectByName("ice1", true);
+                ice2=scene.getObjectByName("ice2", true);
                 
-    </div>
-                <div class="button12">    <a href="https://xd.adobe.com/view/e1762a43-c152-43c2-b0ae-d1b71275bbc4-b425/?fullscreen" class="main-button">View App prototype</a></div>
+                 ice3=scene.getObjectByName("ice3", true);
+                ice4=scene.getObjectByName("ice4", true);
+
+                var light = scene.getObjectByName("Light", true);
+                light = light.children[0];
+                light.castShadow = true;
+                light.distance = 3000;
+                light.penumbra = 1;
+
+                render();
+
+            });
+
+            //position camera
+            camera.position.set(0, 200, 600);
 
 
-        </div>
-        
-     </div>
-    
-</section>
-      
-      <hr class="featurette-divider">
-      
-      
-     <section id="Bibliography" > 
-
-    <div class="wrapper">
-           <!--   <div class=description>
-        <div class="callout">
-        Bibliography
-        </div>
-      </div>-->
-     
-  <div class="label"><img src="images/research.jpg" style="width: 100%;height: 100%"></div>
- <!--button>https://xd.adobe.com/view/e1762a43-c152-43c2-b0ae-d1b71275bbc4-b425/?fullscreen</button-->
-
-
-        
-        
-        
- 
-    </div>
-</section>
-      
-    <hr class="featurette-divider">
-      
-<section id=Contribution>
-  
-    <div class="wrapper">
-
-
-   
-    <div class="parent-box2" style="margin-top:30px">
-        <div id="box2">
-          <div class="label"><img src="images/user1.jpg" style="width: 100%;height: 100%"></div>
-        </div>
-       <div>
-        <p class="lead" >"It's a very novel experiece and I think it's going to be fun.Looking forward to the official version of the app."</p>
-        </div>
-   
-      </div>
-         <div class="parent-box2" style="margin-top:30px">
-        <div id="box2">
-          <div class="label"><img src="images/user2.jpg" style="width: 100%;height: 100%"></div>
-        </div>
-       <div>
-        <p class="lead">"I think this app can help me improve the fun and efficiency in the learning process.But hopefully the functionality and guidance will be clearer in the official version."</p>
-        </div>
-   
-      </div>
-          <div class="parent-box2" style="margin-top:30px">
-        <div id="box2">
-          <div class="label"><img src="images/user3.png" style="width: 100%;height: 100%"></div>
-        </div>
-        <div>
-        <p class="lead">"It is like a virtual boyfriend who will study with me. I hope there will be more choices in robot Settings!This is fun!"
-</p>
-        </div>
-   
-      </div>
-  
-     <!--<div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-        <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
-      </div>
-
-    </div>-->
-        
+            //render the scene
+            //render();
+        }
 
 
 
+        function render() {
+            //call to render scene 60fps
+            requestAnimationFrame(render);
+            camera.lookAt(scene.position);
+
+            //speed
+            var timer = Date.now() * 0.0001;
+
+            //distance
+            camera.position.x = Math.cos(timer) * 600;
+            camera.position.z = Math.sin(timer) * 400;
+            camera.lookAt(scene.position);
+
+            //keep displaying scene
+            TWEEN.update();
+            renderer.render(scene, camera);
 
 
-        
-     </div>
-    
-    
-    
-</section>
-      
-        <hr class="featurette-divider">
-      
 
-      
-      
-<section id=Influence>
-    
-    <!--<div style="padding-left:260px; border:8px solid;"></div>
-    -->
-    
-    <h2 style="margin-left: 10%">Product introduction video</h2>
-    <div class="wrapper">
-  
-        
-      
-             <iframe width="960" height="715" src="https://www.youtube.com/embed/aITrUk3dQIo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-  
-    
- 
+        }
+/*function iceMelt(val) {
+    if (val!= lastVal) {
+                if (val > lastVal) {
+                      iceHt += 0.3;
+                      
+                    new TWEEN.Tween(ice.scale).to({
+                        y: iceHt
+                    }, 800).easing(TWEEN.Easing.Quadratic.InOut).start();
+
+                    
+                }
+        else {    iceHt -= 0.3;
+                    new ice.Tween(ice.scale).to({
+                        y: iceHt
+                    }, 800).easing(TWEEN.Easing.Quadratic.InOut).start();
+
+
+
+                }
+                lastVal = val;
+            }
+}
+       */
+        function showVal(val) {
+
+            if (val!= lastVal) {
+                if (val > lastVal) {
+
+                    waterHt += 0.2;
+                    new TWEEN.Tween(water.scale).to({
+                        y: waterHt
+                    }, 800).easing(TWEEN.Easing.Quadratic.InOut).start();
+                  //ice1
+                    iceHt -= 0.2;
+                    new TWEEN.Tween(ice1.scale).to({
+                        y: iceHt 
+                    }, 800).easing(TWEEN.Easing.Quadratic.InOut).start();
+                    //ice2
+                    iceHt -= 0.2;
+                    new TWEEN.Tween(ice2.scale).to({
+                        y: iceHt 
+                    }, 800).easing(TWEEN.Easing.Quadratic.InOut).start();
+                    //ice3
+                    iceHt -= 0.2;
+                    new TWEEN.Tween(ice3.scale).to({
+                        y: iceHt 
+                    }, 800).easing(TWEEN.Easing.Quadratic.InOut).start();
+
+
+                } else {
+
+                    waterHt -= 0.2;
+                    new TWEEN.Tween(water.scale).to({
+                        y: waterHt
+                    },800).easing(TWEEN.Easing.Quadratic.InOut).start();
+                    //ice1
+                    iceHt += 0.2; 
+                    new TWEEN.Tween(ice1.scale).to({
+                        y: iceHt
+                    }, 800).easing(TWEEN.Easing.Quadratic.InOut).start();
+                    //ice2
+                    iceHt += 0.2;
+                    new TWEEN.Tween(ice2.scale).to({
+                        y: iceHt
+                    }, 800).easing(TWEEN.Easing.Quadratic.InOut).start();
+                     //ice3
+                    iceHt += 0.2;
+                    new TWEEN.Tween(ice3.scale).to({
+                        y: iceHt
+                    }, .008).easing(TWEEN.Easing.Quadratic.InOut).start();
+
+
+                }
+                lastVal = val;
+            }
+
+
+        }
+
+        init();
+
+
+
+        function myFunction1() {
+            document.getElementById("demo").innerHTML = "An overwhelming 97% of scientists agree that climate change is being caused by human greenhouse gas emissions. There is no meaningful debate about the basic science of climate change.Human beings are causing climate change, largely by burning fossil fuels.Rising temperatures correlate almost exactly with the release of greenhouse gases.Due to warming of the oceans and atmosphere, the amount of ice on Earth is declining — from glaciers to the Arctic & Antarctic.";
+        }
+
+        function myFunction2() {
+            document.getElementById("demo").innerHTML = "Over 1 million people living near coasts have been forced from their homes due to rising seas and stronger storms, and millions more are expected to flee in the coming years.Due to warming of the oceans and atmosphere, the amount of ice on Earth is declining — from glaciers to the Arctic & Antarctic.The entire Arctic region is undergoing drastic changes, threatening vital habitat for countless species (yes, including polar bears) and the livelihoods of many Indigenous communities.";
+        }
+
+        function myFunction3() {
+            document.getElementById("demo").innerHTML = "The difference we can make now by keeping fossil fuels in the ground is astounding: if we act now, we can keep the Antarctic ice sheet largely intact. If we don't, Antarctic ice will begin an irreversible slide into the ocean, causing trillions of dollars of damage to people all over the world. Because glaciers are so sensitive to small temperature changes, even if we stopped emissions now, many glaciers will still disappear. But action now to keep fossil fuels in the ground can still save many glaciers.";
+        }
+        function myFunction4() {
+            document.getElementById("demo").innerHTML = "";
+        }
+        function sliderMove(){
             
-    
-</section>
-      
-       <hr class="featurette-divider">
-      
-      
-
-      
-  <!-- FOOTER -->
-  <footer class="container">
-    <p class="float-end"><a href="#">Back to top</a></p>
-    <p>&copy; 2017–2021 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-  </footer>
-      
-    </main>
-    
-     
-    
-    
+            
+        }
+    </script>
 </body>
+
 </html>
