@@ -1,0 +1,532 @@
+<html>
+
+<head>
+    <title>Sea Level Rise</title>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding 0;
+            overflow: hidden;
+/*            text-align: center;
+  */      }
+        
+        
+        #everythingelse {
+            
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding 0;
+            overflow: hidden;
+            text-align: center;
+            
+            
+        }
+        
+        #preloader{
+            position:absolute;
+            width:100%;
+            height:100%;
+            background: #1E5C6B;
+            z-index: 200;
+        }
+        
+        #loading{
+            text-align: center;
+            height:600px;
+            width: 600px;
+            color: #E6F0FA;
+            font-size: 30px;
+            margin: auto;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        #header {
+            position: absolute;
+            width: 100%;
+            z-index:100;
+            
+        }
+
+        #badge {
+            margin-top:20px;
+            width: 100%;
+            max-width: 740px;
+        }
+
+        #panel {
+            position: absolute;
+            right: 33%;
+            left: 33%;
+            bottom: 180px;
+            z-index: 100;
+            width: 33%;
+            max-width: 500px;
+            background-color: rgba(255, 255, 255, 0.8);
+            margin:auto;
+            border-radius: 5px;
+            padding: 5px;
+            
+        }
+
+        .button {
+
+            background-color: #f4511e;
+            border: none;
+            color: white;
+            padding: 10px 40px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 22px;
+            opacity: 0.8;
+            transition: 0.3s;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 5px;
+            
+            
+        }
+
+        .button:hover {
+            opacity: 1
+        }
+        .button2 {
+
+            background-color: lightskyblue;
+            border: none;
+            color: white;
+            padding: 5px 40%;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 24px;
+            opacity: 0.8;
+            transition: 0.3s;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 5px;
+            
+            
+        }
+
+        .button2:hover {
+            opacity: 1
+        }
+
+        #demo {
+            font-size: 22px;
+            padding-right:20px;
+            padding-left: 20px;
+            color:#113d66;
+        }
+
+        #inner {
+            position: absolute;
+            bottom: 30px;
+            z-index: 100;
+            width: 100%;
+        }
+
+        input[type=range].slide {
+            -webkit-appearance: none;
+            background-color: #0a99a3;
+            height: 15px;
+            width: 300px;
+            border-radius: 10px;
+
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            background-color: #0c75a3;
+            margin: 5px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    
+
+    <container id="preloader">
+    <div id="loading">
+        <img src="image/350-logo-v3-white.png" style="width: 100%">
+        <p>Loading, Please Wait</p>
+        <img src="image/load.gif" style="width: 20%">
+        </div>
+    
+    
+    </container>
+    
+<container id="everythingelse">
+    
+    
+    <div id="header">
+        <img src="image/header.png" id="badge" > </div>
+
+
+    
+    <div id="panel">
+        
+
+        <p id="demo"></p>
+        <div><button class="button" onclick="myFunction1()">Cause</button>
+            <button class="button" onclick="myFunction2()">Result</button>  </div>      
+<div>
+        <button class="button" onclick="myFunction3()">Improvement</button>
+        <button class="button" onclick=" window.open('https://350.org/science/','_blank')">More Information</button>
+        </div>
+        
+    <div>    
+    <button class="button2" onclick="myFunction4()">Close</button></div></div>
+
+ 
+    
+
+    <div id="inner">
+          <input class="slide" type="range" min="0" max="7" step="1" value="0" oninput="showVal(this.value)" "iceMelt(val)" > 
+        <p style="color:aliceblue; font-size:24px">Low - Move the slider to change temperature - High </p>
+    </div>
+
+    <script src="js/three.min.js"></script>
+    <script src="js/Detector.js"></script>
+    <script src="js/ColladaLoader.js"></script>
+    <script src="js/tween.min.js"></script>
+
+    <script src="https://unpkg.com/color-js@1.0.3/color.js"></script>
+
+    <script>
+        
+        var Color = net.brehaut.Color;
+        var scene, camera, renderer, water, island, dae, ice;
+        var waterHt = 1,
+            itemsToLoad=1,
+            loaded=0;
+        
+        
+        var swimSpeed = 0.02, rhythm = 20, upDown = 1, fishDepth = 2.5, iceberg;
+        
+        var waterMove, waterBox, clock, wavelength, amplitude, speed, noise, depth;
+        
+        var lastVal = 0;
+        var iceVal = 1;
+        var ice1X=iceVal, ice1Y=iceVal, ice1Z=iceVal;
+        var ice2X=iceVal, ice2Y=iceVal, ice2Z=iceVal;
+        var ice3X=iceVal, ice3Y=iceVal, ice3Z=iceVal;
+        var ice4X=iceVal, ice4Y=iceVal, ice4Z=iceVal;
+        var ice5X=iceVal, ice5Y=iceVal, ice5Z=iceVal;
+        var ice6X=iceVal, ice6Y=iceVal, ice6Z=iceVal;
+        var ice7X=iceVal, ice7Y=iceVal, ice7Z=iceVal;
+        
+        var iceland1X=iceVal, iceland1Y=iceVal, iceland1Z=iceVal;
+        var iceland2X=iceVal, iceland2Y=iceVal, iceland2Z=iceVal;
+        var iceland3X=iceVal, iceland3Y=iceVal, iceland3Z=iceVal;
+        
+        var ice1, ice2, ice3, ice4, ice5, iceland1,iceland2,iceland3;
+        
+        var mouse = new THREE.Vector2(),
+            INTERSECTED;
+        
+        function  checkLoad(){
+        loaded++;
+        if(loaded==itemsToLoad){render();
+                              document.getElementById("preloader").style.visibility='hidden';
+                               }
+        }
+
+        function init() {
+            //add detector to see if WebGL is supported
+            if (!Detector.webgl) Detector.addGetWebGLMessage();
+            //set up a scene
+            scene = new THREE.Scene();
+            //add a camera
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            //render the scene - start renderer and set it's size
+            renderer = new THREE.WebGLRenderer({
+                antialias: true
+            });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0xcaf8f1, 1);
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            //add to webpage
+            document.body.appendChild(renderer.domElement);
+
+            var light = new THREE.DirectionalLight(0xffffff, 0.5);
+            light.position.set(1, 1, 1).
+            normalize();
+            scene.add(light);
+
+            var loader = new THREE.ColladaLoader();
+            loader.options.convertUpAxis = true;
+            loader.load('scene.dae', function(collada) {
+
+                var dae = collada.scene;
+
+                dae.traverse(function(child) {
+
+                    if (child instanceof THREE.Mesh) {
+                        child.castShadow = true;
+                        child.receiveShadow = true;
+                    }
+
+                });
+
+                dae.scale.x = dae.scale.y = dae.scale.z = 0.7;
+                dae.updateMatrix();
+                scene.add(dae);
+
+                water=scene.getObjectByName("water", true);
+                icemo=scene.getObjectByName("icomo", true);
+
+                ice1=scene.getObjectByName("ice1", true);
+                ice2=scene.getObjectByName("ice2", true);
+                
+                ice3=scene.getObjectByName("ice3", true);
+                ice4=scene.getObjectByName("ice4", true);
+                ice5=scene.getObjectByName("ice5", true);
+                
+                ice6=scene.getObjectByName("ice6", true);
+                ice7=scene.getObjectByName("ice7", true);
+                
+                iceland1=scene.getObjectByName("iceland1", true);
+                iceland2=scene.getObjectByName("iceland2", true);
+                iceland3=scene.getObjectByName("iceland3", true);
+                var light = scene.getObjectByName("Light", true);
+                light = light.children[0];
+                light.castShadow = true;
+                light.distance = 4000;
+                light.penumbra = 1;
+
+                checkLoad();
+                
+
+            });
+
+            //position camera
+            camera.position.set(0, 200, 600);
+
+
+            //render the scene
+            //render();
+        }
+
+
+
+        function render() {
+            //call to render scene 60fps
+            requestAnimationFrame(render);
+            camera.lookAt(scene.position);
+
+            //speed
+            var timer = Date.now() * 0.0001;
+
+            //distance
+            camera.position.x = Math.cos(timer) * 600;
+            camera.position.z = Math.sin(timer) * 400;
+            camera.lookAt(scene.position);
+
+            //keep displaying scene
+            TWEEN.update();
+            renderer.render(scene, camera);
+
+
+
+        }
+        
+       //  function un() {
+
+            //changes color of the base
+
+           // material.color.setRGB(0.75, 0.45, 0.34);
+             
+
+        function showVal(val) {
+
+            if (val!= lastVal) {
+                if (val > lastVal) {
+                    ////////////////////////////Water RISE
+                    waterHt += 0.2;
+                    new TWEEN.Tween(water.scale).to({
+                        y: waterHt
+                    }, 800).easing(TWEEN.Easing.Quadratic.InOut).start();
+                    
+                  
+                    ////////////////////////////ice1 EASE OUT
+                    ice1X -= 0.5; 
+                    new TWEEN.Tween(ice1.scale).to({
+                         x: 0, y: 0, z: 0  
+                    }, 1000).easing(TWEEN.Easing.Elastic.InOut).start();
+                    
+                    
+                   ////////////////////////////ice2 EASE OUT 
+                    ice2X -= 0.5;
+                    new TWEEN.Tween(ice2.scale).to({
+                         x: 0, y: 0, z: 0
+                    }, 1000).easing(TWEEN.Easing.Elastic.InOut).start();
+                    
+                                    
+                    ///////////////////////////ice3 EASE OUT
+                    ice3X -= 0.5;
+                    new TWEEN.Tween(ice3.scale).to({
+                         x: 0, y: 0, z: 0
+                    }, 1000).easing(TWEEN.Easing.Elastic.InOut).start();
+                    
+                    
+                    ///////////////////////////////ice4 EASE OUT
+                    ice4X -= 0.5;
+                    new TWEEN.Tween(ice4.scale).to({
+                        x: 0, y: 0, z: 0  
+                    }, 1000).easing(TWEEN.Easing.Elastic.InOut).start();
+                    
+                    
+                    ///////////////////////////////ice5 EASE OUT
+                    ice5X -= 0.5;
+                    new TWEEN.Tween(ice5.scale).to({
+                        x: 0, y: 0, z: 0  
+                    }, 1000).easing(TWEEN.Easing.Elastic.InOut).start();
+                    
+                    ///////////////////////////////ice6 EASE OUT
+                    ice6X -= 0.5;
+                    new TWEEN.Tween(ice6.scale).to({
+                        x: 0, y: 0, z: 0  
+                    }, 1000).easing(TWEEN.Easing.Elastic.InOut).start();
+                    
+                      ///////////////////////////////ice6 EASE OUT
+                    ice7X -= 0.5;
+                    new TWEEN.Tween(ice7.scale).to({
+                        x: 0, y: 0, z: 0  
+                    }, 1000).easing(TWEEN.Easing.Elastic.InOut).start();
+                    
+                     
+                    ///////////////////////////////
+                    iceland1X -= 0.5;
+                    new TWEEN.Tween(iceland1.scale).to({
+                        x: 0, y: 0, z: 0  
+                    }, 1000).easing(TWEEN.Easing.Elastic.InOut).start();
+                    
+                    ///////////////////////////////
+                    iceland2X -= 0.5;
+                    new TWEEN.Tween(iceland2.scale).to({
+                        x: 0, y: 0, z: 0  
+                    }, 1000).easing(TWEEN.Easing.Elastic.InOut).start();
+                    
+                    ///////////////////////////////
+                    iceland3X -= 0.5;
+                    new TWEEN.Tween(iceland3.scale).to({
+                        x: 0, y: 0, z: 0  
+                    }, 1000).easing(TWEEN.Easing.Elastic.InOut).start();
+                    
+                    
+                   
+                } else {
+                    ////////////////////////////Water RISE
+                    waterHt -= 0.2;
+                    new TWEEN.Tween(water.scale).to({
+                        y: waterHt
+                    },800).easing(TWEEN.Easing.Quadratic.InOut).start();
+                    
+                    
+                    ////////////////////////////ice1 EASE IN
+                    ice1X += 0.5;
+                    new TWEEN.Tween(ice1.scale).to({
+                        x: ice1X, y: ice1Y, z: ice1Z  
+                    }, 1000).easing(TWEEN.Easing.Elastic.InOut).start();
+                    
+                                        
+                   //////////////////////////////ice2 EASE IN 
+                    ice2X += 0.5;
+                    new TWEEN.Tween(ice2.scale).to({
+                        x: ice2X, y: ice2Y, z: ice2Z 
+                    }, 1000).easing(TWEEN.Easing.Elastic.InOut).start();
+                    
+                                    
+                    ///////////////////////////////ice3 EASE IN
+                    ice3X += 0.5;
+                    new TWEEN.Tween(ice3.scale).to({
+                        x: ice3X, y: ice3Y, z: ice3Z
+                    }, 1000).easing(TWEEN.Easing.Elastic.InOut).start();
+                    
+                                    
+                    ///////////////////////////////ice4 EASE IN
+                    ice4X += 0.5;
+                    new TWEEN.Tween(ice4.scale).to({
+                        x: ice4X, y: ice4Y, z: ice4Z 
+                    }, 1000).easing(TWEEN.Easing.Elastic.InOut).start();
+                    
+                    ///////////////////////////////ice4 EASE IN
+                    ice5X += 0.5;
+                    new TWEEN.Tween(ice5.scale).to({
+                        x: ice5X, y: ice5Y, z: ice5Z 
+                    }, 1000).easing(TWEEN.Easing.Elastic.InOut).start();
+                    
+                    ///////////////////////////////ice6 EASE IN
+                    ice6X += 0.5;
+                    new TWEEN.Tween(ice6.scale).to({
+                        x: ice6X, y: ice6Y, z: ice6Z 
+                    }, 1000).easing(TWEEN.Easing.Elastic.InOut).start();
+                       
+                    ///////////////////////////////ice7 EASE IN
+                    ice7X += 0.5;
+                    new TWEEN.Tween(ice7.scale).to({
+                        x: ice7X, y: ice7Y, z: ice7Z 
+                    }, 1000).easing(TWEEN.Easing.Elastic.InOut).start();
+                       
+                       
+                    ///////////////////////////////
+                    iceland1X += 0.5;
+                    new TWEEN.Tween(iceland1.scale).to({
+                        x:  iceland1X, y:  iceland1Y, z: iceland1Z 
+                    }, 1000).easing(TWEEN.Easing.Elastic.InOut).start();
+                    
+                    ///////////////////////////////
+                    iceland2X += 0.5;
+                    new TWEEN.Tween(iceland2.scale).to({
+                        x:  iceland2X, y:  iceland2Y, z: iceland2Z 
+                    }, 1000).easing(TWEEN.Easing.Elastic.InOut).start();
+                    
+                    ///////////////////////////////
+                    iceland3X += 0.5;
+                    new TWEEN.Tween(iceland3.scale).to({
+                        x:  iceland3X, y:  iceland3Y, z: iceland3Z 
+                    }, 1000).easing(TWEEN.Easing.Elastic.InOut).start();
+                    
+                }
+                lastVal = val;
+            }
+
+
+        }
+
+        init();
+
+
+
+        function myFunction1() {
+            document.getElementById("demo").innerHTML = "An overwhelming 97% of scientists agree that climate change is being caused by human greenhouse gas emissions. There is no meaningful debate about the basic science of climate change.Human beings are causing climate change, largely by burning fossil fuels.Rising temperatures correlate almost exactly with the release of greenhouse gases.Due to warming of the oceans and atmosphere, the amount of ice on Earth is declining from glaciers to the Arctic & Antarctic.";
+        }
+
+        function myFunction2() {
+            document.getElementById("demo").innerHTML = "Over 1 million people living near coasts have been forced from their homes due to rising seas and stronger storms, and millions more are expected to flee in the coming years.Due to warming of the oceans and atmosphere, the amount of ice on Earth is declining from glaciers to the Arctic & Antarctic.The entire Arctic region is undergoing drastic changes, threatening vital habitat for countless species (yes, including polar bears) and the livelihoods of many Indigenous communities.";
+        }
+
+        function myFunction3() {
+            document.getElementById("demo").innerHTML = "The difference we can make now by keeping fossil fuels in the ground is astounding: if we act now, we can keep the Antarctic ice sheet largely intact. If we don't, Antarctic ice will begin an irreversible slide into the ocean, causing trillions of dollars of damage to people all over the world. Because glaciers are so sensitive to small temperature changes, even if we stopped emissions now, many glaciers will still disappear. But action now to keep fossil fuels in the ground can still save many glaciers.";
+        }
+        function myFunction4() {
+            document.getElementById("demo").innerHTML = "";
+        }
+        function sliderMove(){
+            
+            
+        }
+    </script>
+    </container>
+</body>
+
+</html>
